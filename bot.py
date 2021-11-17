@@ -16,7 +16,9 @@ def get_quote():
 
 
 def get_pic(name):
-    image_url = "https://source.unsplash.com/800x450/?{}".format(name)
+    image_url = "https://source.unsplash.com/900x600/?random"
+    if(name):
+        image_url = "https://source.unsplash.com/900x600/?{}".format(name)
     # print(image_url)
     response = requests.get(image_url, stream=True)
     file = open("test1.jpg", "wb")
@@ -48,7 +50,7 @@ async def on_message(message):
 
 
     if message.content.startswith('$pic'):
-        picture = msg.split("$pic ", 1)[1]
+        picture = msg.split("$pic", 1)[1]
         get_pic(picture)
         await message.channel.send("Wait Good Things take time")
         await message.channel.send(file=discord.File('./test1.jpg'))
