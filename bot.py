@@ -57,3 +57,5 @@ async def on_message(message):
 
 
 client.run(config.key);
+# https://discord.com/api/oauth2/authorize?client_id=910505990850506793&permissions=534723947584&scope=bot
+# to run this bot you will need a key so please contact me for demo!!!!!!
