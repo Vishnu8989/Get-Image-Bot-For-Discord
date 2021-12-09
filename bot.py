@@ -22,8 +22,12 @@ async def on_message(message):
     if message.content.startswith('$inspire'):
         quote = gen.get_quote()
         await message.channel.send(quote)
-        gen.get_pic("motivational")
-        await message.channel.send(file=discord.File('./motivational.jpg'))
+        picture = "quote"
+        await message.channel.send("Wait that's not all ,\nHere is a random \"Quote\" pic...")
+        gen.get_pic(picture)
+        date_time = config.date_time
+        image_name = './'+picture+'_' + date_time + '.jpg'
+        await message.channel.send(file=discord.File(image_name))
 
     if message.content.startswith('$pic'):
         picture = msg.split("$pic ", 1)[1]
@@ -31,7 +35,7 @@ async def on_message(message):
         gen.get_pic(picture)
         date_time = config.date_time
         # print("Bot : "+date_time)
-        image_name = './'+date_time+'_' + picture+'.jpg'
+        image_name = './'+picture+'_' + date_time + '.jpg'
         # print("Image : "+image_name)
         await message.channel.send("\n\n\nAnd here it is ")
         await message.channel.send(file=discord.File(image_name))

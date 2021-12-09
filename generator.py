@@ -21,7 +21,7 @@ def get_pic(name):
     date_time = config.get_time()
     # print("Generator : "+date_time)
     response = requests.get(image_url, stream=True)
-    image_name = date_time+"_" + name+".jpg"
+    image_name = name+"_" + date_time + ".jpg"
     # print("Generator : "+image_name)
     file = open(image_name, "wb")
     response.raw_decode_content = True
