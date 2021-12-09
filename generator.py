@@ -11,12 +11,13 @@ def get_quote():
 
 
 def get_pic(name):
-    image_url = "https://source.unsplash.com/900x600/?random"
+    image_url = "https://source.unsplash.com/3840x2160/?random"
     if(name):
-        image_url = "https://source.unsplash.com/900x600/?{}".format(name)
+        image_url = "https://source.unsplash.com/3840x2160/?{}".format(name)
     print(name)
     response = requests.get(image_url, stream=True)
-    file = open("test1.jpg", "wb")
+    image_name = name+".jpg";
+    file = open(image_name, "wb")
     response.raw_decode_content = True
     shutil.copyfileobj(response.raw, file)
     del response
