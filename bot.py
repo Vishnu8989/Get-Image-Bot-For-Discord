@@ -1,3 +1,5 @@
+from datetime import datetime
+from typing import Generator
 import discord
 import config
 import generator as gen
@@ -27,7 +29,10 @@ async def on_message(message):
         picture = msg.split("$pic ", 1)[1]
         await message.channel.send("Loading a random {} picture...".format(picture))
         gen.get_pic(picture)
-        image_name = './'+picture+'.jpg'
+        date_time = config.date_time
+        # print("Bot : "+date_time)
+        image_name = './'+date_time+'_' + picture+'.jpg'
+        # print("Image : "+image_name)
         await message.channel.send("\n\n\nAnd here it is ")
         await message.channel.send(file=discord.File(image_name))
 

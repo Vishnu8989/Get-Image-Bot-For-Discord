@@ -1,6 +1,9 @@
+
+from datetime import datetime
 import shutil
 import json  # to help in returned json files from http requests
 import requests  # allow code to make http requests
+import config
 
 
 def get_quote():
@@ -15,8 +18,11 @@ def get_pic(name):
     if(name):
         image_url = "https://source.unsplash.com/3840x2160/?{}".format(name)
     print(name)
+    date_time = config.get_time()
+    # print("Generator : "+date_time)
     response = requests.get(image_url, stream=True)
-    image_name = name+".jpg";
+    image_name = date_time+"_" + name+".jpg"
+    # print("Generator : "+image_name)
     file = open(image_name, "wb")
     response.raw_decode_content = True
     shutil.copyfileobj(response.raw, file)
